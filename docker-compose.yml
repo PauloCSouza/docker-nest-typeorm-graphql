@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+
+  database:
+    image: mongo
+    container_name: nest-db
+    restart: always
+    ports: 
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: poemaemvide
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 0sz86cv50@
+    networks: 
+      - backend-nest-api
+
+  api:
+    build:
+      context: ./back-end
+    container_name: nest-api
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - ./back-end:/home/api
+      - /home/api/node_modules
+    networks: 
+      - backend-nest-api
+    depends_on: 
+      - database
+
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
+  #   networks: 
+  #     - backend-nest-api
+
+networks: 
+  backend-nest-api:
+    driver: bridge
