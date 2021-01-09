@@ -23,7 +23,6 @@ services:
       - "3000:3000"
     volumes: 
       - ./back-end:/home/api
-      - /home/api/node_modules
     networks: 
       - backend-nest-api
     depends_on: 
