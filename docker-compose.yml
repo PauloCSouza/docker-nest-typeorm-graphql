@@ -4,7 +4,7 @@ services:
 
   database:
     image: mongo
-    container_name: nest-db
+    container_name: nest-database
     restart: always
     ports: 
       - 27017:27017
@@ -13,13 +13,24 @@ services:
       # MONGO_INITDB_ROOT_USERNAME: poemaemvideo
       # MONGO_INITDB_ROOT_PASSWORD: poemaemvideo
 
-  api:
+  backend:
     build:
       context: ./back-end
-    container_name: nest-api
+    container_name: nest-backend
     ports: 
-      - "3000:3000"
+      - "3001:3000"
     volumes: 
       - ./back-end:/home/api
     depends_on: 
       - database
+  
+  frontend:
+    build: 
+      context: ./front-end
+    container_name: nest-frontend
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - ./front-end:/home/front
+    depends_on: 
+      - backend

@@ -24,7 +24,8 @@
 - [X] GraphQL
 - [X] TypeORM
 - [x] MongoDB
-- [ ] NextJS + Apollo
+- [X] NextJS
+- [ ] Apollo
 
 ## Dependências
 
@@ -34,7 +35,8 @@
 
 1. Clone este repositório;<br />
 2. Execute `docker-compose up -d` para criar os containers e instalar as dependências.<br />
-3. Acesse `localhost:3000` em seu navegador.<br />
+3. Acesse `localhost:3000` em seu navegador para acessar o back-end.<br />
+3. Acesse `localhost:3001` em seu navegador para acessar o front-end.<br />
 
 ## Contribuindo
 
