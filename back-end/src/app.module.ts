@@ -9,7 +9,8 @@ import { PoemasModule } from './poemas/poemas.module';
     TypeOrmModule.forRoot(TypeOrmConfig),
     PoemasModule,
     GraphQLModule.forRoot({
-      autoSchemaFile: true
+      autoSchemaFile: true,
+      playground: true
     })
   ],
 })
