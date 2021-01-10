@@ -1,8 +1,5 @@
-<h1 align="center">
-Docker + NestJS + TypeORM + GraphQL + MongoDB
-</h1>
-
-<p align="center">Simples aplicação API utilizando NestJS no BackEnd e NextJS com Apollo no FrontEnd.</p>
+<h1 align="center">Docker + NestJS + TypeORM + GraphQL + MongoDB</h1>
+<p align="center">Simples aplicação que tem como objetivo utilizar containers para rodar uma API com NestJS no BackEnd, NextJS com Apollo no FrontEnd e MongoDB como Banco de Dados.</p>
 
 <hr>
 
