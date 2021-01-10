@@ -24,8 +24,8 @@ Docker + NestJS + TypeORM + GraphQL + MongoDB
 ## Requisitos não Funcionais
 
 - [x] Nest.js
-- [ ] GraphQL
-- [ ] TypeORM
+- [X] GraphQL
+- [X] TypeORM
 - [x] MongoDB
 - [ ] NextJS + Apollo
 
