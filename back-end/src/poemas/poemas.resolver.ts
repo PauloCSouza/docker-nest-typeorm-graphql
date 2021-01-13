@@ -1,8 +1,11 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Subscription } from '@nestjs/graphql';
 import { PoemasService } from './poemas.service';
 import { PoemaSchema } from './schemas/poema.schema';
 import { CreatePoemaInput } from './dto/create-poema.input';
 import { UpdatePoemaInput } from './dto/update-poema.input';
+import { PubSub } from 'graphql-subscriptions';
+
+const pubSub = new PubSub();
 
 @Resolver(() => PoemaSchema)
 export class PoemasResolver {
@@ -10,7 +13,9 @@ export class PoemasResolver {
 
   @Mutation(() => PoemaSchema)
   async createPoema(@Args('createPoemaInput') createPoemaInput: CreatePoemaInput): Promise<PoemaSchema> {
-    return await this.poemasService.create(createPoemaInput);
+    const response = await this.poemasService.create(createPoemaInput);
+    pubSub.publish('poemaAdded', { poemaAdded: createPoemaInput });
+    return response;
   }
 
   @Query(() => [PoemaSchema], { name: 'poemas' })
@@ -32,4 +37,10 @@ export class PoemasResolver {
   async removePoema(@Args('email', { type: () => String }) email: string): Promise<PoemaSchema> {
     return await this.poemasService.remove(email);
   }
+
+  @Subscription(() => PoemaSchema)
+  poemaAdded() {
+    return pubSub.asyncIterator('poemaAdded');
+  }
+
 }

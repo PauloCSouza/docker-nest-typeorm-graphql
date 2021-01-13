@@ -10,7 +10,8 @@ import { PoemasModule } from './poemas/poemas.module';
     PoemasModule,
     GraphQLModule.forRoot({
       autoSchemaFile: true,
-      playground: true
+      playground: true,
+      installSubscriptionHandlers: true
     })
   ],
 })
